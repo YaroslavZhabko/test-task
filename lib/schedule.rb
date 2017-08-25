@@ -9,7 +9,7 @@ class Schedule
     validate_range!(from, to)
 
     range = [from, to]
-    @ranges = ranges.empty? ? [range] : add_new_range(range)
+    @ranges = add_new_range(range)
   end
 
   def remove from, to
