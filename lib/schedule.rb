@@ -15,8 +15,6 @@ class Schedule
   def remove from, to
     validate_range!(from, to)
 
-    return ranges if ranges.empty?
-
     range = [from, to]
     @ranges = remove_range(range)
   end
