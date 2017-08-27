@@ -35,24 +35,20 @@ class Schedule
         e_from = existed_range[0]
         e_to   = existed_range[1]
 
-        if new_range_used
+        if n_to < e_from
+          new_ranges << [n_from, n_to] unless new_range_used
           new_ranges << existed_range
-        else
-          if n_to < e_from
-            new_ranges << [n_from, n_to]
-            new_ranges << existed_range
-            new_range_used = true
-          elsif n_from > e_to
-            new_ranges << existed_range
-          elsif n_from >= e_from && n_from <= e_to && n_to >= e_to
-            n_from = e_from
-          elsif n_from <= e_from && n_to <= e_to
-            new_ranges << [n_from, e_to]
-            new_range_used = true
-          elsif e_from < n_from && n_to < e_to
-            new_ranges << existed_range
-            new_range_used = true
-          end
+          new_range_used = true
+        elsif n_from > e_to
+          new_ranges << existed_range
+        elsif n_from >= e_from && n_from <= e_to && n_to >= e_to
+          n_from = e_from
+        elsif n_from <= e_from && n_to <= e_to
+          new_ranges << [n_from, e_to]
+          new_range_used = true
+        elsif e_from < n_from && n_to < e_to
+          new_ranges << existed_range
+          new_range_used = true
         end
       end
 
