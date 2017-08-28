@@ -74,8 +74,6 @@ class Schedule
     def update_ranges_with(from, to)
       validate_range!(from, to)
 
-      range = [from, to]
-
       @ranges = yield([from, to])
     end
 
