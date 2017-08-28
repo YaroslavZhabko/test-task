@@ -1,4 +1,4 @@
-# This class don't contain any bussines logic, only UI part for console
+# This class doesn't contain any bussines logic, only UI part for console
 
 class Presenter
   attr_reader :schedule
@@ -26,7 +26,6 @@ class Presenter
   end
 
   private
-
     def print_status
       puts divider
       puts schedule.ranges.to_s
